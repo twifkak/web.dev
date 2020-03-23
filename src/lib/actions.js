@@ -1,6 +1,7 @@
 import {store} from "./store";
 import {saveUserUrl} from "./fb";
 import {runLighthouse, fetchReports} from "./lighthouse-service";
+import {localStorage} from "./utils/storage";
 
 export const clearSignedInState = store.action(() => {
   const {isSignedIn} = store.getState();
@@ -148,7 +149,7 @@ export const checkIfUserAcceptsCookies = store.action(
       return;
     }
 
-    if (localStorage.getItem("web-accepts-cookies")) {
+    if (localStorage["web-accepts-cookies"]) {
       return {
         userAcceptsCookies: true,
       };
@@ -159,7 +160,7 @@ export const checkIfUserAcceptsCookies = store.action(
 );
 
 export const setUserAcceptsCookies = store.action(() => {
-  localStorage.setItem("web-accepts-cookies", 1);
+  localStorage["web-accepts-cookies"] = 1;
   return {
     userAcceptsCookies: true,
     showingSnackbar: false,
