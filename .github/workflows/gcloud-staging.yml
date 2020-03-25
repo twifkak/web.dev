@@ -37,6 +37,6 @@ jobs:
       - name: Check for 200
         uses: srt32/uptime@v0.1
         with:
-          url-to-hit: ${{ GAE_VERSION }}-dot-web-dev-staging.appspot.com
+          url-to-hit: ${{ env.GAE_VERSION }}-dot-web-dev-staging.appspot.com
 
 # TODO(samthor): Write generated hash to comment on PR.
